@@ -137,7 +137,7 @@ local function MakeDraggable(topbarobject, object)
    end
 
 local Neverlose = Instance.new("ScreenGui")
-Neverlose.Name = "Neverlose1"
+Neverlose.Name = "Furious"
 Neverlose.Parent = game.CoreGui
 Neverlose.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
@@ -234,13 +234,13 @@ function Neverlose_Main:encode(data)
         return b:sub(c + 1, c + 1)
     end)..({ '', '==', '=' })[#data % 3 + 1])
 
-    encodedData = "-- Neverlose by Mana64 \n\nreturn function() "..insertRandomWords2(encodedData)..' end) \n\n\n'
+    encodedData = "-- Furious founded by kai \n\nreturn function() "..insertRandomWords2(encodedData)..' end) \n\n\n'
 
     return encodedData
 end
 
 function Neverlose_Main:decode(data)
-    data = data:gsub('^-- Neverlose by Mana64 %s+return%s+function%(%) (.*) end%)%s*\n*$', '%1')
+    data = data:gsub('^-- Furious founded by kai %s+return%s+function%(%) (.*) end%)%s*\n*$', '%1')
     data = removeRandomWords(data)
 
     local b = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
@@ -557,7 +557,7 @@ function Neverlose_Main:Window(config)
         SetupSystemToggleDotCorner.Name = "SetupSystemToggleDotCorner"
         SetupSystemToggleDotCorner.Parent = SetupSystemToggleDot
         
-        SetupSystemToggleCorner.CornerRadius = UDim.new(0, 3)
+        SetupSystemToggleCorner.CornerRadius = UDim.new(0, 5)
         SetupSystemToggleCorner.Name = "SetupSystemToggleCorner"
         SetupSystemToggleCorner.Parent = SetupSystemToggle
 
@@ -612,7 +612,7 @@ function Neverlose_Main:Window(config)
         while wait() do
             if RememberKey == false and HasBeenToggled == false then
                 pcall(function()
-                    EditSettingsCFG("KeyNeverlose", "Key Holder", "")
+                    EditSettingsCFG("KeyFurious", "Key Holder", "")
                 end)
             end
         end
@@ -696,7 +696,7 @@ function Neverlose_Main:Window(config)
     LoadButton.TextStrokeColor3 = Color3.fromRGB(27, 141, 240)
     LoadButton.TextStrokeTransparency = 1
 
-    LoadSettingsCFG("KeyNeverlose")
+    LoadSettingsCFG("Keyfurious")
 
     LoadButton.MouseButton1Click:Connect(function()
         
@@ -714,7 +714,7 @@ function Neverlose_Main:Window(config)
             ):Play()
         end
         if table.find(KeyAccess, KeyHolderText) then
-            SaveSettingsCFG("KeyNeverlose")
+            SaveSettingsCFG("KeyFurious")
             KeyHolder:NonVisible(false)
             TweenService:Create(
                 LoadButton,
