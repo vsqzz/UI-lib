@@ -1,12 +1,12 @@
-if game.CoreGui:FindFirstChild("Furious1") then
-    game.CoreGui.Furious1:Destroy()
+if game.CoreGui:FindFirstChild("Neverlose1") then
+    game.CoreGui.Neverlose1:Destroy()
 end
 
 for i,v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
     v:Disable()
 end
 
-local Furious_Main = {
+local Neverlose_Main = {
     Settings = {
         CloseBind = "RightControl",
     },
@@ -60,7 +60,7 @@ local RunService = game:GetService("RunService")
 local req = (syn and syn.request) or (http and http.request) or http_request or nil
 local Player = game:GetService("Players").LocalPlayer
 
-local GenerateGUID = Furious_Main.HttpService:GenerateGUID(false) 
+local GenerateGUID = Neverlose_Main.HttpService:GenerateGUID(false) 
 
 getgenv()[GenerateGUID] = true
 
@@ -68,7 +68,7 @@ if not getgenv()[GenerateGUID] then
     getgenv()[GenerateGUID] = false
 end
 
-function Furious_Main:PlaySound(SoundID)
+function Neverlose_Main:PlaySound(SoundID)
     local sound = Instance.new("Sound")
     sound.SoundId = SoundID
     sound.Looped = false
@@ -77,7 +77,7 @@ function Furious_Main:PlaySound(SoundID)
     sound:Play()
 end
 
-local BuildInfo = loadstring(game:HttpGet"https://pastebin.com/raw/wp4hjRna")()
+local BuildInfo = loadstring(game:HttpGet"https://pastebin.com/raw/HzAeDGm4")()
 
 local function MakeDraggable(topbarobject, object)
     local Dragging = nil
@@ -136,13 +136,13 @@ local function MakeDraggable(topbarobject, object)
     )
    end
 
-local Furious = Instance.new("ScreenGui")
-Furious.Name = "Furious"
-Furious.Parent = game.CoreGui
-Furious.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+local Neverlose = Instance.new("ScreenGui")
+Neverlose.Name = "FURIOUS"
+Neverlose.Parent = game.CoreGui
+Neverlose.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 -- -- this function converts a string to base64
--- function Furious_Main:encode(data)
+-- function Neverlose_Main:encode(data)
 --     local b = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
 --     return ((data:gsub('.', function(x) 
 --         local r,b='',x:byte()
@@ -157,7 +157,7 @@ Furious.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 -- end
  
 -- -- this function converts base64 to string
--- function Furious_Main:decode(data)
+-- function Neverlose_Main:decode(data)
 --     local b = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
 --     data = string.gsub(data, '[^'..b..'=]', '')
 --     return (data:gsub('.', function(x)
@@ -221,7 +221,7 @@ local function removeRandomWords(data)
     return result
 end
 
-function Furious_Main:encode(data)
+function Neverlose_Main:encode(data)
     local b = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
     local encodedData = ((data:gsub('.', function(x)
         local r, b = '', x:byte()
@@ -234,13 +234,13 @@ function Furious_Main:encode(data)
         return b:sub(c + 1, c + 1)
     end)..({ '', '==', '=' })[#data % 3 + 1])
 
-    encodedData = "-- Furious founded by kai \n\nreturn function() "..insertRandomWords2(encodedData)..' end) \n\n\n'
+    encodedData = "-- Neverlose by Mana64 \n\nreturn function() "..insertRandomWords2(encodedData)..' end) \n\n\n'
 
     return encodedData
 end
 
-function Furious_Main:decode(data)
-    data = data:gsub('^-- Furious founded by kai %s+return%s+function%(%) (.*) end%)%s*\n*$', '%1')
+function Neverlose_Main:decode(data)
+    data = data:gsub('^-- Neverlose by Mana64 %s+return%s+function%(%) (.*) end%)%s*\n*$', '%1')
     data = removeRandomWords(data)
 
     local b = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
@@ -258,7 +258,7 @@ function Furious_Main:decode(data)
     end))
 end
 
-function Furious_Main:GetDistance(player_pos, Endpoint)
+function Neverlose_Main:GetDistance(player_pos, Endpoint)
     local HumanoidRootPart = player_pos or game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
     if typeof(Endpoint) == "Instance" then
         Endpoint = Vector3.new(Endpoint.Position.X, HumanoidRootPart.Position.Y, Endpoint.Position.Z)
@@ -269,7 +269,7 @@ function Furious_Main:GetDistance(player_pos, Endpoint)
     return Magnitude
 end
 
-function Furious_Main:GetPlayerImage(ID)
+function Neverlose_Main:GetPlayerImage(ID)
     local width = 420
     local height = 420
     local format = "png"
@@ -285,21 +285,21 @@ function Furious_Main:GetPlayerImage(ID)
     return imageUrl
 end
 
-function Furious_Main:SetCFG(name)
-    Furious_Main.Targeted_Config = name
+function Neverlose_Main:SetCFG(name)
+    Neverlose_Main.Targeted_Config = name
 end
 
-function Furious_Main:LoadSettings(Folder, CFGName)
+function Neverlose_Main:LoadSettings(Folder, CFGName)
 
     local Encoded = readfile(Folder .. "/settings.txt")
-    local Decoded = Furious_Main:decode(Encoded)
+    local Decoded = Neverlose_Main:decode(Encoded)
 
-    writefile(Folder .. "/settings.txt", tostring(Furious_Main.HttpService:JSONEncode(Decoded)))
+    writefile(Folder .. "/settings.txt", tostring(Neverlose_Main.HttpService:JSONEncode(Decoded)))
 
-    Furious_Main.Settings = Furious_Main.HttpService:JSONDecode(readfile(Folder .. "/settings.txt"))
+    Neverlose_Main.Settings = Neverlose_Main.HttpService:JSONDecode(readfile(Folder .. "/settings.txt"))
 end
 
-function Furious_Main:AutoJoinDiscord(DiscordCode)
+function Neverlose_Main:AutoJoinDiscord(DiscordCode)
     local req = (syn and syn.request) or (http and http.request) or http_request
     if req then
         req({
@@ -309,9 +309,9 @@ function Furious_Main:AutoJoinDiscord(DiscordCode)
                 ['Content-Type'] = 'application/json',
                 Origin = 'https://discord.com'
             },
-            Body = Furious_Main.HttpService:JSONEncode({
+            Body = Neverlose_Main.HttpService:JSONEncode({
                 cmd = 'INVITE_BROWSER',
-                nonce = Furious_Main.HttpService:GenerateGUID(false),
+                nonce = Neverlose_Main.HttpService:GenerateGUID(false),
                 args = {code = DiscordCode}
             })
         })
@@ -322,7 +322,7 @@ function ChangeTypeText(object)
     TweenService:Create(
         object,
     TweenInfo.new(.3, Enum.EasingStyle.Quad),
-    {TextColor3 = Furious_Main.Theme.Custom.Text}
+    {TextColor3 = Neverlose_Main.Theme.Custom.Text}
 ):Play()
 end
 
@@ -330,11 +330,11 @@ function ChangeTypeElement(object)
     TweenService:Create(
         object,
         TweenInfo.new(.3, Enum.EasingStyle.Quad),
-        {BackgroundColor3 = Furious_Main.Theme.Custom.Element}
+        {BackgroundColor3 = Neverlose_Main.Theme.Custom.Element}
     ):Play()
 end
 
-function Furious_Main:Window(config)
+function Neverlose_Main:Window(config)
     local FirstTab, SettingsToggled = false, false
     local title = config.Title
     local Folder1 = config.CFG
@@ -347,7 +347,7 @@ function Furious_Main:Window(config)
 
     local Folder = tostring(Folder1)
 
-    function Furious_Main:GetConfigNames()
+    function Neverlose_Main:GetConfigNames()
         local ReturnTable = {}
         local ListScripts = listfiles(Folder.."/configs")
         for i,v in pairs(ListScripts) do
@@ -376,37 +376,37 @@ function Furious_Main:Window(config)
 
     if not isfile(Folder .. "/settings.txt") then
         local content = {}
-        for i,v in pairs(Furious_Main.Settings) do
+        for i,v in pairs(Neverlose_Main.Settings) do
             content[i] = v
         end
-        writefile(Folder .. "/settings.txt", tostring(Furious_Main.HttpService:JSONEncode(content)))
+        writefile(Folder .. "/settings.txt", tostring(Neverlose_Main.HttpService:JSONEncode(content)))
     end
-    Furious_Main.Settings = Furious_Main.HttpService:JSONDecode(readfile(Folder .. "/settings.txt"))
+    Neverlose_Main.Settings = Neverlose_Main.HttpService:JSONDecode(readfile(Folder .. "/settings.txt"))
 
 
 
     function SaveSettings(bool)
-        local rd = Furious_Main.HttpService:JSONDecode(readfile(Folder.."/settings.txt"))
+        local rd = Neverlose_Main.HttpService:JSONDecode(readfile(Folder.."/settings.txt"))
         state = bool
         if state then
             return rd
         end
         local content = {}
-        for i,v in pairs(Furious_Main.Settings) do
+        for i,v in pairs(Neverlose_Main.Settings) do
             content[i] = v
         end
-        -- writefile(Folder .. "/settings.txt", tostring(Furious_Main.HttpService:JSONEncode(Furious_Main:encode(content))))
-        writefile(Folder .. "/settings.txt", tostring(Furious_Main.HttpService:JSONEncode(content)))
+        -- writefile(Folder .. "/settings.txt", tostring(Neverlose_Main.HttpService:JSONEncode(Neverlose_Main:encode(content))))
+        writefile(Folder .. "/settings.txt", tostring(Neverlose_Main.HttpService:JSONEncode(content)))
     end
 
 
     function SaveSettingsCFG(cfg)
         local content = {}
-        for i, v in pairs(Furious_Main.SettingsFlags) do
+        for i, v in pairs(Neverlose_Main.SettingsFlags) do
             content[i] = v.Value
         end
     
-        local Encoded = Furious_Main.HttpService:JSONEncode(content) -- Use HttpService
+        local Encoded = Neverlose_Main.HttpService:JSONEncode(content) -- Use HttpService
     
         writefile(Folder1 .. "/KeySystem/" .. cfg .. ".txt", Encoded)
     end
@@ -415,12 +415,12 @@ function Furious_Main:Window(config)
         if not isfile(Folder1 .. "/KeySystem/" .. cfg .. ".txt") then return end
         local Encoded = readfile(Folder1 .. "/KeySystem/" .. cfg .. ".txt")
     
-        local JSONData = Furious_Main.HttpService:JSONDecode(Encoded) -- Use HttpService
+        local JSONData = Neverlose_Main.HttpService:JSONDecode(Encoded) -- Use HttpService
     
         for a, b in pairs(JSONData) do
-            if Furious_Main.SettingsFlags[a] then
+            if Neverlose_Main.SettingsFlags[a] then
                 spawn(function()
-                    Furious_Main.SettingsFlags[a]:Set(b)
+                    Neverlose_Main.SettingsFlags[a]:Set(b)
                 end)
             else
                 warn("Error ", a, b)
@@ -431,11 +431,11 @@ function Furious_Main:Window(config)
     function EditSettingsCFG(cfg, Name, newvalue)
         local Encoded = readfile(Folder1 .. "/KeySystem/" .. cfg .. ".txt")
     
-        local JSONData = Furious_Main.HttpService:JSONDecode(Encoded) -- Use HttpService
+        local JSONData = Neverlose_Main.HttpService:JSONDecode(Encoded) -- Use HttpService
     
-        if Furious_Main.SettingsFlags[Name] then
+        if Neverlose_Main.SettingsFlags[Name] then
             spawn(function()
-                Furious_Main.SettingsFlags[Name]:Set(newvalue)
+                Neverlose_Main.SettingsFlags[Name]:Set(newvalue)
             end)
         end
     end
@@ -453,7 +453,7 @@ function Furious_Main:Window(config)
     local KeyFrameLine2 = Instance.new("Frame")
 
     KeyFrame.Name = "KeyFrame"
-    KeyFrame.Parent = Furious
+    KeyFrame.Parent = Neverlose
     KeyFrame.BackgroundColor3 = Color3.fromRGB(9, 9, 13)
     KeyFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
     KeyFrame.BorderSizePixel = 0
@@ -557,7 +557,7 @@ function Furious_Main:Window(config)
         SetupSystemToggleDotCorner.Name = "SetupSystemToggleDotCorner"
         SetupSystemToggleDotCorner.Parent = SetupSystemToggleDot
         
-        SetupSystemToggleCorner.CornerRadius = UDim.new(0, 5)
+        SetupSystemToggleCorner.CornerRadius = UDim.new(0, 3)
         SetupSystemToggleCorner.Name = "SetupSystemToggleCorner"
         SetupSystemToggleCorner.Parent = SetupSystemToggle
 
@@ -591,12 +591,12 @@ function Furious_Main:Window(config)
         end
 
         SetupSystemToggle.MouseButton1Click:Connect(function()
-            Furious_Main:PlaySound(Furious_Main.Lib_Sounds.ClickSound)
+            Neverlose_Main:PlaySound(Neverlose_Main.Lib_Sounds.ClickSound)
             SToggled = not SToggled
             SystemTogglefunc:Set(SToggled)
         end)
 
-        Furious_Main.SettingsFlags[title] = SystemTogglefunc
+        Neverlose_Main.SettingsFlags[title] = SystemTogglefunc
         return SystemTogglefunc
     end
     local HasBeenToggled = false
@@ -612,7 +612,7 @@ function Furious_Main:Window(config)
         while wait() do
             if RememberKey == false and HasBeenToggled == false then
                 pcall(function()
-                    EditSettingsCFG("KeyFurious", "Key Holder", "")
+                    EditSettingsCFG("KeyNeverlose", "Key Holder", "")
                 end)
             end
         end
@@ -661,7 +661,7 @@ function Furious_Main:Window(config)
             KeyBoxfunc:Set(KeyText)
         end)
 
-        Furious_Main.SettingsFlags[title] = KeyBoxfunc
+        Neverlose_Main.SettingsFlags[title] = KeyBoxfunc
         return KeyBoxfunc
     end
 
@@ -696,7 +696,7 @@ function Furious_Main:Window(config)
     LoadButton.TextStrokeColor3 = Color3.fromRGB(27, 141, 240)
     LoadButton.TextStrokeTransparency = 1
 
-    LoadSettingsCFG("Keyfurious")
+    LoadSettingsCFG("KeyNeverlose")
 
     LoadButton.MouseButton1Click:Connect(function()
         
@@ -714,7 +714,7 @@ function Furious_Main:Window(config)
             ):Play()
         end
         if table.find(KeyAccess, KeyHolderText) then
-            SaveSettingsCFG("KeyFurious")
+            SaveSettingsCFG("KeyNeverlose")
             KeyHolder:NonVisible(false)
             TweenService:Create(
                 LoadButton,
@@ -910,7 +910,7 @@ function Furious_Main:Window(config)
 
 
     MainFrame.Name = "MainFrame"
-    MainFrame.Parent = Furious
+    MainFrame.Parent = Neverlose
     MainFrame.BackgroundColor3 = Color3.fromRGB(9, 9, 13)
     MainFrame.BorderColor3 = Color3.fromRGB(9, 9, 13)
     MainFrame.BorderSizePixel = 0
@@ -918,7 +918,7 @@ function Furious_Main:Window(config)
     MainFrame.Size = UDim2.new(0, 643, 0, 682)
     MainFrame.ZIndex = 0
 
-    function Furious_Main:VisMain(v)
+    function Neverlose_Main:VisMain(v)
         MainFrame.Visible = v
     end
 
@@ -961,7 +961,7 @@ function Furious_Main:Window(config)
     PlayerImage.BorderSizePixel = 0
     PlayerImage.Position = UDim2.new(0.0643564388, 0, 9, 0)
     PlayerImage.Size = UDim2.new(0, 44, 0, 44)
-    PlayerImage.Image = Furious_Main:GetPlayerImage(Player.UserId)
+    PlayerImage.Image = Neverlose_Main:GetPlayerImage(Player.UserId)
     
     PlayerImageCorner.CornerRadius = UDim.new(1, 0)
     PlayerImageCorner.Name = "PlayerImageCorner"
@@ -1225,7 +1225,7 @@ function Furious_Main:Window(config)
     ContainerHolder.Size = UDim2.new(0, 640, 0, 604)
     
     ToggledFrame.Name = "ToggledFrame"
-    ToggledFrame.Parent = Furious
+    ToggledFrame.Parent = Neverlose
     ToggledFrame.BackgroundColor3 = Color3.fromRGB(0, 28, 56)
     ToggledFrame.BackgroundTransparency = 0.6
     ToggledFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1269,7 +1269,7 @@ function Furious_Main:Window(config)
     end
 
     NotifyHolder.Name = "NotifyHolder"
-    NotifyHolder.Parent = Furious
+    NotifyHolder.Parent = Neverlose
     NotifyHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     NotifyHolder.BackgroundTransparency = 1.000
     NotifyHolder.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1283,7 +1283,7 @@ function Furious_Main:Window(config)
     NotifyFrameLayout.SortOrder = Enum.SortOrder.LayoutOrder
     NotifyFrameLayout.Padding = UDim.new(0, 10)
 
-    function Furious_Main:Notify(cfg)
+    function Neverlose_Main:Notify(cfg)
         local Title = cfg.Title
         local text = cfg.Text
         local Time = cfg.Time or 2
@@ -1424,7 +1424,7 @@ function Furious_Main:Window(config)
     end
 
     spawn(function()
-    Furious_Main:Notify({
+    Neverlose_Main:Notify({
         Title = "Welcome",
         Text = "Welcome | ".. game.Players.LocalPlayer.Name,
         Time = 2
@@ -1616,7 +1616,7 @@ function Furious_Main:Window(config)
     Original.MouseButton1Click:Connect(function()
         
         StyleStroke.Parent = Original
-        Furious_Main:Notify({
+        Neverlose_Main:Notify({
             Title = "Settings",
             Text = "Feature still in Testing!",
             Time = 2,
@@ -1644,7 +1644,7 @@ function Furious_Main:Window(config)
     White.MouseButton1Click:Connect(function()
         
         StyleStroke.Parent = White
-        Furious_Main:Notify({
+        Neverlose_Main:Notify({
             Title = "Settings",
             Text = "Feature still in Testing!",
             Time = 2,
@@ -1672,7 +1672,7 @@ function Furious_Main:Window(config)
     Black.MouseButton1Click:Connect(function()
         
         StyleStroke.Parent = Black
-        Furious_Main:Notify({
+        Neverlose_Main:Notify({
             Title = "Settings",
             Text = "Feature still in Testing!",
             Time = 2,
@@ -1729,7 +1729,7 @@ function Furious_Main:Window(config)
     BindsOn.MouseButton1Click:Connect(function()
         
         BindsStroke.Parent = BindsOn
-        Furious_Main:Notify({
+        Neverlose_Main:Notify({
             Title = "Settings",
             Text = "Binds ON!",
             Time = 2,
@@ -1758,7 +1758,7 @@ function Furious_Main:Window(config)
     BindsOff.MouseButton1Click:Connect(function()
         
         BindsStroke.Parent = BindsOff
-        Furious_Main:Notify({
+        Neverlose_Main:Notify({
             Title = "Settings",
             Text = "Binds OFF!",
             Time = 2,
@@ -2183,14 +2183,14 @@ function Furious_Main:Window(config)
                             wait(1)
                             loadfile(v)()
                         end)
-                        Furious_Main:Notify({
+                        Neverlose_Main:Notify({
                             Title = "Settings",
                             Text = file_name_without_extension.." loaded",
                             Time = 2,
                             AutoClose = true
                         })
                         if goo == false then
-                            Furious_Main:Notify({
+                            Neverlose_Main:Notify({
                                 Title = "Settings",
                                 Text = "Error: "..file_name_without_extension..bad,
                                 Time = 2,
@@ -2217,7 +2217,7 @@ function Furious_Main:Window(config)
                                 v:Destroy()
                             end
                         end
-                        Furious_Main:Notify({
+                        Neverlose_Main:Notify({
                             Title = "Settings",
                             Text = file_name_without_extension.." Unloaded",
                             Time = 2,
@@ -2304,7 +2304,7 @@ function Furious_Main:Window(config)
         
                 DeleteLua.MouseButton1Click:Connect(function()
                     
-                    Furious_Main:Notify({
+                    Neverlose_Main:Notify({
                         Title = "Settings",
                         Text = "Deleted Script!",
                         Time = 2,
@@ -2321,7 +2321,7 @@ function Furious_Main:Window(config)
                             v:Destroy()
                         end
                     end
-                    Furious_Main:Notify({
+                    Neverlose_Main:Notify({
                         Title = "Settings",
                         Text = file_name_without_extension.." Unloaded",
                         Time = 2,
@@ -2346,7 +2346,7 @@ function Furious_Main:Window(config)
         
                 EditScript.MouseButton1Click:Connect(function()
                     
-                    Furious_Main:Notify({
+                    Neverlose_Main:Notify({
                         Title = "Settings",
                         Text = "Still in Testing!",
                         Time = 2,
@@ -2367,7 +2367,7 @@ function Furious_Main:Window(config)
         
                 ShareScript.MouseButton1Click:Connect(function()
                     
-                    Furious_Main:Notify({
+                    Neverlose_Main:Notify({
                         Title = "Settings",
                         Text = "Copied to clipboard!",
                         Time = 2,
@@ -2459,14 +2459,14 @@ function Furious_Main:Window(config)
                         wait(1)
                         loadfile(v)()
                     end)
-                    Furious_Main:Notify({
+                    Neverlose_Main:Notify({
                         Title = "Settings",
                         Text = file_name_without_extension.." loaded",
                         Time = 2,
                         AutoClose = true
                     })
                     if goo == false then
-                        Furious_Main:Notify({
+                        Neverlose_Main:Notify({
                             Title = "Settings",
                             Text = "Error: "..file_name_without_extension..bad,
                             Time = 2,
@@ -2493,7 +2493,7 @@ function Furious_Main:Window(config)
                             v:Destroy()
                         end
                     end
-                    Furious_Main:Notify({
+                    Neverlose_Main:Notify({
                         Title = "Settings",
                         Text = file_name_without_extension.." Unloaded",
                         Time = 2,
@@ -2581,7 +2581,7 @@ function Furious_Main:Window(config)
     
             DeleteLua.MouseButton1Click:Connect(function()
                 
-                Furious_Main:Notify({
+                Neverlose_Main:Notify({
                     Title = "Settings",
                     Text = "Deleted Script!",
                     Time = 2,
@@ -2599,7 +2599,7 @@ function Furious_Main:Window(config)
                         v:Destroy()
                     end
                 end
-                Furious_Main:Notify({
+                Neverlose_Main:Notify({
                     Title = "Settings",
                     Text = file_name_without_extension.." Unloaded",
                     Time = 2,
@@ -2623,7 +2623,7 @@ function Furious_Main:Window(config)
     
             EditScript.MouseButton1Click:Connect(function()
                 
-                Furious_Main:Notify({
+                Neverlose_Main:Notify({
                     Title = "Settings",
                     Text = "Still in Testing!",
                     Time = 2,
@@ -2644,7 +2644,7 @@ function Furious_Main:Window(config)
     
             ShareScript.MouseButton1Click:Connect(function()
                 
-                Furious_Main:Notify({
+                Neverlose_Main:Notify({
                     Title = "Settings",
                     Text = "Copied to clipboard!",
                     Time = 2,
@@ -2654,7 +2654,7 @@ function Furious_Main:Window(config)
                 setclipboard(readedfile)
             end)
             ShareScript.MouseEnter:Connect(function()
-                Furious_Main:PlaySound(Furious_Main.Lib_Sounds.HoverSound)
+                Neverlose_Main:PlaySound(Neverlose_Main.Lib_Sounds.HoverSound)
             end)
         end
         
@@ -2691,8 +2691,8 @@ function Furious_Main:Window(config)
             ChatFrame.Visible = false
             -- SettingsFrame.Visible = false
             -- SettingsToggled = false
-            Furious_Main:Notify({
-                Title = "Furious",
+            Neverlose_Main:Notify({
+                Title = "Neverlose",
                 Text = "Feature Temporarily Disabled!"
             })
         end)
@@ -2792,7 +2792,7 @@ function Furious_Main:Window(config)
         --             Url = "https://chatting.madsbrriinckbas.repl.co/api/poll/",
         --             Method = "GET"
         --         })
-        --         local data = Furious_Main.HttpService:JSONDecode(data.Body)
+        --         local data = Neverlose_Main.HttpService:JSONDecode(data.Body)
         --         for i,v in pairs(data.messages) do
         --             if not getgenv().processedMessages[v.uid] then
         --                 getgenv().processedMessages[v.uid] = true -- Mark the message as processed
@@ -2804,7 +2804,7 @@ function Furious_Main:Window(config)
         --                 local NameTextCorner = Instance.new("UICorner")
 
         --                 ChatSocketFrame.Name = "ChatSocketFrame"
-        --                 ChatSocketFrame.Parent = ChatFrameFrame --game:GetService("CoreGui").Furious1.MainFrame.ChatFrame.ChatFrameFrame
+        --                 ChatSocketFrame.Parent = ChatFrameFrame --game:GetService("CoreGui").Neverlose1.MainFrame.ChatFrame.ChatFrameFrame
         --                 ChatSocketFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         --                 ChatSocketFrame.BackgroundTransparency = 1.000
         --                 ChatSocketFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -2916,7 +2916,7 @@ function Furious_Main:Window(config)
 
         ChatBoxText.FocusLost:Connect(function(ep)
             if ep then
-                local Data = Furious_Main.HttpService:JSONEncode({
+                local Data = Neverlose_Main.HttpService:JSONEncode({
                     msg = ChatBoxText.Text
                 })
                 req({
@@ -2952,7 +2952,7 @@ function Furious_Main:Window(config)
 
         SendChatButton.MouseButton1Click:Connect(function()
             
-            local Data = Furious_Main.HttpService:JSONEncode({
+            local Data = Neverlose_Main.HttpService:JSONEncode({
                 msg = ChatBoxText.Text
             })
             req({
@@ -2975,7 +2975,7 @@ function Furious_Main:Window(config)
         ChatFrameLine_2.Position = UDim2.new(-0.00185185182, 0, 0.818330586, 0)
         ChatFrameLine_2.Size = UDim2.new(1, 0, 0, 1)
 
-        spawn(function()task.wait(.5)Furious_Main:AutoJoinDiscord("qq6WgyMwkw")end)
+        spawn(function()task.wait(.5)Neverlose_Main:AutoJoinDiscord("qq6WgyMwkw")end)
 
     local TabsSec = {}
     function TabsSec:TSection(title)
@@ -3022,20 +3022,20 @@ function Furious_Main:Window(config)
         TabsSectionLayout.SortOrder = Enum.SortOrder.LayoutOrder
         TabsSectionLayout.Padding = UDim.new(0, 4)
 
-        -- function Furious_Main:LoadCfg(cfg)
+        -- function Neverlose_Main:LoadCfg(cfg)
         --     local Encoded = readfile(Folder1 .. "/configs/" .. cfg .. ".txt")
-        --     local Decoded = Furious_Main:decode(Encoded)
+        --     local Decoded = Neverlose_Main:decode(Encoded)
             
-        --     local Encode = Furious_Main.HttpService:JSONEncode(Decoded)
+        --     local Encode = Neverlose_Main.HttpService:JSONEncode(Decoded)
 
         --     writefile(Folder1.."/configs/"..cfg..".txt", Encode)
         --     local content = readfile(Folder1.."/configs/"..cfg..".txt")
     
         --     table.foreach(content, function(a,b)
         --         print(a,b)
-        --     if Furious_Main.Flags[a] then
+        --     if Neverlose_Main.Flags[a] then
         --         spawn(function()
-        --           Furious_Main.Flags[a]:Set(b)
+        --           Neverlose_Main.Flags[a]:Set(b)
         --        end)
         --     else
         --         warn("Error ", a,b)
@@ -3043,32 +3043,32 @@ function Furious_Main:Window(config)
         -- end)
         -- end
         
-        -- function Furious_Main:SaveCfg(cfg)
+        -- function Neverlose_Main:SaveCfg(cfg)
         --     local content = {}
-        --     for i,v in pairs(Furious_Main.Flags) do
+        --     for i,v in pairs(Neverlose_Main.Flags) do
         --         content[i] = v.Value
         --     end
-        --     writefile(Folder1.."/configs/"..cfg..".txt", Furious_Main:encode(tostring(Furious_Main.HttpService:JSONEncode(content)))) -- FolderName.."/configs/"..name..".cfg"
+        --     writefile(Folder1.."/configs/"..cfg..".txt", Neverlose_Main:encode(tostring(Neverlose_Main.HttpService:JSONEncode(content)))) -- FolderName.."/configs/"..name..".cfg"
         -- end
       
-        -- function Furious_Main:CreateCfg(cfg)
+        -- function Neverlose_Main:CreateCfg(cfg)
         --     local content = {}
-        --     for i,v in pairs(Furious_Main.Flags) do
+        --     for i,v in pairs(Neverlose_Main.Flags) do
         --         content[i] = v.Value
         --     end
-        --     writefile(Folder1.."/configs/"..cfg..".txt", Furious_Main:encode(Furious_Main.HttpService:JSONEncode(content))) -- FolderName.."/configs/"..name..".cfg"
-        --     -- writefile("Furious/configs/Mana64.txt", Furious_Main:encode(tostring(content)))
+        --     writefile(Folder1.."/configs/"..cfg..".txt", Neverlose_Main:encode(Neverlose_Main.HttpService:JSONEncode(content))) -- FolderName.."/configs/"..name..".cfg"
+        --     -- writefile("Neverlose/configs/Mana64.txt", Neverlose_Main:encode(tostring(content)))
         -- end
 
-        function Furious_Main:LoadCfg(cfg)
+        function Neverlose_Main:LoadCfg(cfg)
             local Encoded = readfile(Folder1 .. "/configs/" .. cfg .. ".txt")
 
-            local JSONData = Furious_Main.HttpService:JSONDecode(Furious_Main:decode(Encoded))
+            local JSONData = Neverlose_Main.HttpService:JSONDecode(Neverlose_Main:decode(Encoded))
             
             table.foreach(JSONData, function(a,b)
-                if Furious_Main.Flags[a] then
+                if Neverlose_Main.Flags[a] then
                     spawn(function()
-                        Furious_Main.Flags[a]:Set(b)
+                        Neverlose_Main.Flags[a]:Set(b)
                     end)
                 else
                     warn("Error ", a, b)
@@ -3076,26 +3076,26 @@ function Furious_Main:Window(config)
             end)
         end
         
-        function Furious_Main:SaveCfg(cfg)
+        function Neverlose_Main:SaveCfg(cfg)
             local content = {}
-            for i, v in pairs(Furious_Main.Flags) do
+            for i, v in pairs(Neverlose_Main.Flags) do
                 content[i] = v.Value
             end
 
-            local Encoded = Furious_Main:encode(Furious_Main.HttpService:JSONEncode(content))
+            local Encoded = Neverlose_Main:encode(Neverlose_Main.HttpService:JSONEncode(content))
             
             writefile(Folder1 .. "/configs/" .. cfg .. ".txt", Encoded)
         end
 
-        function Furious_Main:Edit_LastLoad(cfg)
-            writefile(Folder1.."/LastLoaded.txt", Furious_Main.HttpService:JSONEncode({["CFG"] = tostring(cfg)}))
+        function Neverlose_Main:Edit_LastLoad(cfg)
+            writefile(Folder1.."/LastLoaded.txt", Neverlose_Main.HttpService:JSONEncode({["CFG"] = tostring(cfg)}))
         end
 
-        function Furious_Main:LastConfigSaved()
+        function Neverlose_Main:LastConfigSaved()
             if isfile(Folder1.."/LastLoaded.txt") then
-                return Furious_Main.HttpService:JSONDecode(readfile(Folder1.."/LastLoaded.txt")).CFG
+                return Neverlose_Main.HttpService:JSONDecode(readfile(Folder1.."/LastLoaded.txt")).CFG
             else
-                Furious_Main:Notify({Title = "Furious",
+                Neverlose_Main:Notify({Title = "Neverlose",
                     Text = 'Please Save a config first!',
                     Time = 2,
                     AutoClose = true
@@ -3103,32 +3103,32 @@ function Furious_Main:Window(config)
             end
         end
         
-        function Furious_Main:CreateCfg(cfg)
+        function Neverlose_Main:CreateCfg(cfg)
             local content = {}
-            for i, v in pairs(Furious_Main.Flags) do
+            for i, v in pairs(Neverlose_Main.Flags) do
                 content[i] = v.Value
             end
             
-            local Encoded = Furious_Main.HttpService:JSONEncode(content) -- Convert to JSON string
+            local Encoded = Neverlose_Main.HttpService:JSONEncode(content) -- Convert to JSON string
             
             writefile(Folder1 .. "/configs/" .. cfg .. ".txt", Encoded)
         end
         
         SaveCFGB.MouseButton1Click:Connect(function()
-            if Furious_Main.Targeted_Config == "" then
-                Furious_Main:Notify({Title = "Furious",
+            if Neverlose_Main.Targeted_Config == "" then
+                Neverlose_Main:Notify({Title = "Neverlose",
                     Text = 'Please Select a config first!',
                     Time = 2,
                     AutoClose = true
                 })
             else
-                Furious_Main:Notify({Title = "Furious",
-                    Text = "Saved to: "..tostring(Furious_Main.Targeted_Config),
+                Neverlose_Main:Notify({Title = "Neverlose",
+                    Text = "Saved to: "..tostring(Neverlose_Main.Targeted_Config),
                     Time = 2,
                     AutoClose = true
                 })
-                Furious_Main:SaveCfg(tostring(Furious_Main.Targeted_Config))
-                Edit_LastLoad(tostring(Furious_Main.Targeted_Config))
+                Neverlose_Main:SaveCfg(tostring(Neverlose_Main.Targeted_Config))
+                Edit_LastLoad(tostring(Neverlose_Main.Targeted_Config))
             end
         end)
 
@@ -3241,7 +3241,7 @@ function Furious_Main:Window(config)
             end
 
             Tab.MouseButton1Click:Connect(function()
-                Furious_Main:PlaySound(Furious_Main.Lib_Sounds.ClickSound)
+                Neverlose_Main:PlaySound(Neverlose_Main.Lib_Sounds.ClickSound)
                 for i,v in pairs(ContainerHolder:GetChildren()) do
                     if v:IsA("ScrollingFrame") then
                         v.Visible = false
@@ -3367,7 +3367,7 @@ function Furious_Main:Window(config)
                             TweenService:Create(
                                 Section,
                                 TweenInfo.new(.3, Enum.EasingStyle.Quad),
-                                {BackgroundColor3 = Furious_Main.Theme.Custom.Section}
+                                {BackgroundColor3 = Neverlose_Main.Theme.Custom.Section}
                             ):Play()
                         end)
                     end
@@ -3450,7 +3450,7 @@ function Furious_Main:Window(config)
                         while task.wait() do
                             pcall(function()
                                 ChangeTypeText(ButtonTitle)
-                                ButtonStroke.Color = Furious_Main.Theme.Custom.Element
+                                ButtonStroke.Color = Neverlose_Main.Theme.Custom.Element
                             end)
                         end
                     end)
@@ -3478,7 +3478,7 @@ function Furious_Main:Window(config)
                         ):Play()
                     end)
                     Button.MouseButton1Click:Connect(function()
-                        Furious_Main:PlaySound(Furious_Main.Lib_Sounds.ClickSound)
+                        Neverlose_Main:PlaySound(Neverlose_Main.Lib_Sounds.ClickSound)
                         pcall(callback)
                     end)
                     Section.Size = UDim2.new(0, 285, 0, SectionLayout.AbsoluteContentSize.Y + 10)
@@ -3659,7 +3659,7 @@ function Furious_Main:Window(config)
                     end
 
                     Toggle.MouseButton1Click:Connect(function()
-                        Furious_Main:PlaySound(Furious_Main.Lib_Sounds.ClickSound)
+                        Neverlose_Main:PlaySound(Neverlose_Main.Lib_Sounds.ClickSound)
                         Toggled = not Toggled
                         Togglefunc:Set(Toggled)
                         if Toggled then
@@ -3678,14 +3678,14 @@ function Furious_Main:Window(config)
                                     TweenService:Create(
                                         ToggleDot,
                                         TweenInfo.new(.4, Enum.EasingStyle.Quad),
-                                        {BackgroundColor3 = Furious_Main.Theme.Custom.Element}
+                                        {BackgroundColor3 = Neverlose_Main.Theme.Custom.Element}
                                     ):Play()
                                 end)
                             end
                         end
                     end)
 
-                    Furious_Main.Flags[title] = Togglefunc
+                    Neverlose_Main.Flags[title] = Togglefunc
                     return Togglefunc
                 end
 
@@ -3858,13 +3858,13 @@ function Furious_Main:Window(config)
                         while task.wait() do
                             pcall(function()
                                 ChangeTypeText(DropdownTitle)
-                                Arrow.ImageColor3 = Furious_Main.Theme.Custom.Element
+                                Arrow.ImageColor3 = Neverlose_Main.Theme.Custom.Element
                             end)
                         end
                     end)
 
                     Dropdown.MouseButton1Click:Connect(function()
-                        Furious_Main:PlaySound(Furious_Main.Lib_Sounds.ClickSound)
+                        Neverlose_Main:PlaySound(Neverlose_Main.Lib_Sounds.ClickSound)
                         if DropToggled == false then
                             DropdownFrameHold.Visible = true
                             TweenService:Create(
@@ -3936,7 +3936,7 @@ function Furious_Main:Window(config)
                         DropdownHolder.CanvasSize = UDim2.new(0, 0, 0, DropdownHolderLayout.AbsoluteContentSize.Y + 10)
 
                         Item.MouseButton1Click:Connect(function()
-                            Furious_Main:PlaySound(Furious_Main.Lib_Sounds.ClickSound)
+                            Neverlose_Main:PlaySound(Neverlose_Main.Lib_Sounds.ClickSound)
                             Dropfunc:Set(v)
                             TweenService:Create(
                                 DropdownFrameHold,
@@ -3990,7 +3990,7 @@ function Furious_Main:Window(config)
                             DropdownHolderPadding.PaddingTop = UDim.new(0, 1)
     
                             Item.MouseButton1Click:Connect(function()
-                                Furious_Main:PlaySound(Furious_Main.Lib_Sounds.ClickSound)
+                                Neverlose_Main:PlaySound(Neverlose_Main.Lib_Sounds.ClickSound)
                                 Dropfunc:Set(v)
                                 TweenService:Create(
                                     DropdownFrameHold,
@@ -4012,7 +4012,7 @@ function Furious_Main:Window(config)
                         end
                     end
 
-                    Furious_Main.Flags[title] = Dropfunc
+                    Neverlose_Main.Flags[title] = Dropfunc
                     return Dropfunc
                 end
 
@@ -4211,7 +4211,7 @@ function Furious_Main:Window(config)
                             end
                          end)
 
-                    Furious_Main.Flags[title] = Sliderfunc
+                    Neverlose_Main.Flags[title] = Sliderfunc
                     return Sliderfunc
                 end
 
@@ -4484,7 +4484,7 @@ function Furious_Main:Window(config)
                                 TweenService:Create(
                                     ColorPFrameGlow,
                                     TweenInfo.new(.4, Enum.EasingStyle.Quad),
-                                    {ImageColor3 = Furious_Main.Theme.Custom.Glow}
+                                    {ImageColor3 = Neverlose_Main.Theme.Custom.Glow}
                                 ):Play()
                             end)
                         end
@@ -4521,7 +4521,7 @@ function Furious_Main:Window(config)
                                 TweenService:Create(
                                     ColorpreviewStroke,
                                     TweenInfo.new(.3, Enum.EasingStyle.Quad),
-                                    {Color = Furious_Main.Theme.Custom.Element}
+                                    {Color = Neverlose_Main.Theme.Custom.Element}
                                 ):Play()
                                 ChangeTypeText(ColorpickerTitle)
                             end)
@@ -4838,10 +4838,10 @@ function Furious_Main:Window(config)
                                  RunService.RenderStepped:Connect(
                                     function()
                                     local ColorX =
-                                       (math.clamp(Furious_Main.Mouse.X - ChoseColor.AbsolutePosition.X, 0, ChoseColor.AbsoluteSize.X) /
+                                       (math.clamp(Neverlose_Main.Mouse.X - ChoseColor.AbsolutePosition.X, 0, ChoseColor.AbsoluteSize.X) /
                                        ChoseColor.AbsoluteSize.X)
                                     local ColorY =
-                                       (math.clamp(Furious_Main.Mouse.Y - ChoseColor.AbsolutePosition.Y, 0, ChoseColor.AbsoluteSize.Y) /
+                                       (math.clamp(Neverlose_Main.Mouse.Y - ChoseColor.AbsolutePosition.Y, 0, ChoseColor.AbsoluteSize.Y) /
                                        ChoseColor.AbsoluteSize.Y)
               
                                     ColorSelection.Position = UDim2.new(ColorX, 0, ColorY, 0)
@@ -4880,7 +4880,7 @@ function Furious_Main:Window(config)
                                  RunService.RenderStepped:Connect(
                                     function()
                                     local HueY =
-                                       (math.clamp(Furious_Main.Mouse.Y - Hue.AbsolutePosition.Y, 0, Hue.AbsoluteSize.Y) /
+                                       (math.clamp(Neverlose_Main.Mouse.Y - Hue.AbsolutePosition.Y, 0, Hue.AbsoluteSize.Y) /
                                           Hue.AbsoluteSize.Y)
               
                                     HueSelection.Position = UDim2.new(0.48, 0, HueY, 0)
@@ -4903,7 +4903,7 @@ function Furious_Main:Window(config)
                         end
                      )
                      
-                    Furious_Main.Flags[title] = Colorpickerfunc
+                    Neverlose_Main.Flags[title] = Colorpickerfunc
                     return Colorpickerfunc
                 end
 
@@ -5052,7 +5052,7 @@ function Furious_Main:Window(config)
                                 TweenService:Create(
                                     BindFrameGlow,
                                     TweenInfo.new(.4, Enum.EasingStyle.Quad),
-                                    {ImageColor3 = Furious_Main.Theme.Custom.Glow}
+                                    {ImageColor3 = Neverlose_Main.Theme.Custom.Glow}
                                 ):Play()
                                 ChangeTypeText(BindTitle)
                             end)
@@ -5217,7 +5217,7 @@ function Furious_Main:Window(config)
                         TweenService:Create(
                             BindSettingImage,
                             TweenInfo.new(.3, Enum.EasingStyle.Quad),
-                            {ImageColor3 = Furious_Main.Theme.Custom.Element}
+                            {ImageColor3 = Neverlose_Main.Theme.Custom.Element}
                         ):Play()
                         
                         local NameToggle = Instance.new("Frame")
@@ -5423,7 +5423,7 @@ function Furious_Main:Window(config)
                             TweenService:Create(
                                 BindSettingImage,
                                 TweenInfo.new(.3, Enum.EasingStyle.Quad),
-                                {ImageColor3 = Furious_Main.Theme.Custom.Element}
+                                {ImageColor3 = Neverlose_Main.Theme.Custom.Element}
                             ):Play()
 
                             NameToggle.Visible = true
@@ -5436,7 +5436,7 @@ function Furious_Main:Window(config)
                         TweenService:Create(
                             BModeToggle,
                             TweenInfo.new(.3, Enum.EasingStyle.Quad),
-                            {BackgroundColor3 = Furious_Main.Theme.Custom.Element}
+                            {BackgroundColor3 = Neverlose_Main.Theme.Custom.Element}
                         ):Play()
     
                         TweenService:Create(
@@ -5449,7 +5449,7 @@ function Furious_Main:Window(config)
                             TweenService:Create(
                                 BModeToggle,
                                 TweenInfo.new(.3, Enum.EasingStyle.Quad),
-                                {BackgroundColor3 = Furious_Main.Theme.Custom.Element}
+                                {BackgroundColor3 = Neverlose_Main.Theme.Custom.Element}
                             ):Play()
     
                             TweenService:Create(
@@ -5466,7 +5466,7 @@ function Furious_Main:Window(config)
                             TweenService:Create(
                                 BModeHold,
                                 TweenInfo.new(.3, Enum.EasingStyle.Quad),
-                                {BackgroundColor3 = Furious_Main.Theme.Custom.Element}
+                                {BackgroundColor3 = Neverlose_Main.Theme.Custom.Element}
                             ):Play()
     
                             TweenService:Create(
@@ -5666,7 +5666,7 @@ function Furious_Main:Window(config)
                         TweenService:Create(
                             BindSettingImage,
                             TweenInfo.new(.3, Enum.EasingStyle.Quad),
-                            {ImageColor3 = Furious_Main.Theme.Custom.Element}
+                            {ImageColor3 = Neverlose_Main.Theme.Custom.Element}
                         ):Play()
                         
                         local NameToggle = Instance.new("Frame")
@@ -5872,7 +5872,7 @@ function Furious_Main:Window(config)
                             TweenService:Create(
                                 BindSettingImage,
                                 TweenInfo.new(.3, Enum.EasingStyle.Quad),
-                                {ImageColor3 = Furious_Main.Theme.Custom.Element}
+                                {ImageColor3 = Neverlose_Main.Theme.Custom.Element}
                             ):Play()
 
                             NameToggle.Visible = true
@@ -5884,7 +5884,7 @@ function Furious_Main:Window(config)
                             TweenService:Create(
                                 BModeHold,
                                 TweenInfo.new(.3, Enum.EasingStyle.Quad),
-                                {BackgroundColor3 = Furious_Main.Theme.Custom.Element}
+                                {BackgroundColor3 = Neverlose_Main.Theme.Custom.Element}
                             ):Play()
     
                             TweenService:Create(
@@ -5898,7 +5898,7 @@ function Furious_Main:Window(config)
                             TweenService:Create(
                                 BModeToggle,
                                 TweenInfo.new(.3, Enum.EasingStyle.Quad),
-                                {BackgroundColor3 = Furious_Main.Theme.Custom.Element}
+                                {BackgroundColor3 = Neverlose_Main.Theme.Custom.Element}
                             ):Play()
     
                             TweenService:Create(
@@ -5914,7 +5914,7 @@ function Furious_Main:Window(config)
                             TweenService:Create(
                                 BModeToggle,
                                 TweenInfo.new(.3, Enum.EasingStyle.Quad),
-                                {BackgroundColor3 = Furious_Main.Theme.Custom.Element}
+                                {BackgroundColor3 = Neverlose_Main.Theme.Custom.Element}
                             ):Play()
     
                             TweenService:Create(
@@ -5931,7 +5931,7 @@ function Furious_Main:Window(config)
                             TweenService:Create(
                                 BModeHold,
                                 TweenInfo.new(.3, Enum.EasingStyle.Quad),
-                                {BackgroundColor3 = Furious_Main.Theme.Custom.Element}
+                                {BackgroundColor3 = Neverlose_Main.Theme.Custom.Element}
                             ):Play()
     
                             TweenService:Create(
@@ -6211,46 +6211,46 @@ function Furious_Main:Window(config)
         end)
         
         Sec2:Button("Create Config", function()
-            Furious_Main:CreateCfg(tostring(Config_Name))
-            Furious_Main:Notify({
-                Title = "Furious",
+            Neverlose_Main:CreateCfg(tostring(Config_Name))
+            Neverlose_Main:Notify({
+                Title = "FURIOUS",
                 Text = "Created Config: "..tostring(Config_Name)
             })
         end)
 
-        local Configs_Drop = Sec1:Dropdown("Select Config", Furious_Main:GetConfigNames(), function(t)
+        local Configs_Drop = Sec1:Dropdown("Select Config", Neverlose_Main:GetConfigNames(), function(t)
             Selected_Config = t
-            Furious_Main:Notify({Title = "Furious",
+            Neverlose_Main:Notify({Title = "Furious",
                 Text = "Targeted CFG: "..tostring(Selected_Config)
             })
-            Furious_Main:SetCFG(tostring(Selected_Config))
+            Neverlose_Main:SetCFG(tostring(Selected_Config))
         end)
 
         Sec1:Button("Refresh Configs", function()
-            Configs_Drop:Refresh(Furious_Main:GetConfigNames())
+            Configs_Drop:Refresh(Neverlose_Main:GetConfigNames())
         end)
         Sec1:Line()
         Sec1:Button("Load Selected Config", function()
-            Furious_Main:Notify({Title = "Furious",
+            Neverlose_Main:Notify({Title = "Neverlose",
                 Text = "Loaded Config: "..tostring(Selected_Config)
             })
-            Furious_Main:LoadCfg(tostring(Selected_Config))
-            Furious_Main:Edit_LastLoad(tostring(Selected_Config))
+            Neverlose_Main:LoadCfg(tostring(Selected_Config))
+            Neverlose_Main:Edit_LastLoad(tostring(Selected_Config))
         end)
-        Sec3:Colorpicker("Background", Furious_Main.Theme.Custom.Background, function(t)
-            Furious_Main.Theme.Custom.Background = t
+        Sec3:Colorpicker("Background", Neverlose_Main.Theme.Custom.Background, function(t)
+            Neverlose_Main.Theme.Custom.Background = t
         end)
-        Sec3:Colorpicker("Section", Furious_Main.Theme.Custom.Section, function(t)
-            Furious_Main.Theme.Custom.Section = t
+        Sec3:Colorpicker("Section", Neverlose_Main.Theme.Custom.Section, function(t)
+            Neverlose_Main.Theme.Custom.Section = t
         end)
-        Sec3:Colorpicker("Element", Furious_Main.Theme.Custom.Element, function(t)
-            Furious_Main.Theme.Custom.Element = t
+        Sec3:Colorpicker("Element", Neverlose_Main.Theme.Custom.Element, function(t)
+            Neverlose_Main.Theme.Custom.Element = t
         end)
-        Sec3:Colorpicker("Text", Furious_Main.Theme.Custom.Text, function(t)
-            Furious_Main.Theme.Custom.Text = t
+        Sec3:Colorpicker("Text", Neverlose_Main.Theme.Custom.Text, function(t)
+            Neverlose_Main.Theme.Custom.Text = t
         end)
-        Sec3:Colorpicker("Glow", Furious_Main.Theme.Custom.Glow, function(t)
-            Furious_Main.Theme.Custom.Glow = t
+        Sec3:Colorpicker("Glow", Neverlose_Main.Theme.Custom.Glow, function(t)
+            Neverlose_Main.Theme.Custom.Glow = t
         end)
 
         Sec4:Bind("Toggle Menu", function(t)
@@ -6265,7 +6265,7 @@ function Furious_Main:Window(config)
         local Is_Loaded = false
 
         if not isfile(Folder..'/On_Launch.json') then
-            writefile(Folder..'/On_Launch.json', Furious_Main.HttpService:JSONEncode({
+            writefile(Folder..'/On_Launch.json', Neverlose_Main.HttpService:JSONEncode({
                 ["On_Launch"] = false,
             }))
         end
@@ -6273,26 +6273,26 @@ function Furious_Main:Window(config)
         local Get_ALC = Sec4:Toggle("Open Menu On Launch", function(t)
             On_Launch = t
             if On_Launch then
-                writefile(Folder..'/On_Launch.json', Furious_Main.HttpService:JSONEncode({
+                writefile(Folder..'/On_Launch.json', Neverlose_Main.HttpService:JSONEncode({
                     ["On_Launch"] = true,
                 }))
             else
-                writefile(Folder..'/On_Launch.json', Furious_Main.HttpService:JSONEncode({
+                writefile(Folder..'/On_Launch.json', Neverlose_Main.HttpService:JSONEncode({
                     ["On_Launch"] = false,
                 }))
             end
         end)
 
-        local Get_Load = Furious_Main.HttpService:JSONDecode(readfile(Folder..'/On_Launch.json')).On_Launch
+        local Get_Load = Neverlose_Main.HttpService:JSONDecode(readfile(Folder..'/On_Launch.json')).On_Launch
 
         Get_ALC:Set(Get_Load)
 
-        game.CoreGui:WaitForChild("Furious1").MainFrame.Visible = Get_Load
+        game.CoreGui:WaitForChild("Neverlose1").MainFrame.Visible = Get_Load
 
-        Furious_Main:Notify({
+        Neverlose_Main:Notify({
             Title = "Welcome",
             Text = "Menu Key | LeftControl",
-            Time = 2
+            Time = 5
         })
 
     end)
@@ -6300,26 +6300,26 @@ function Furious_Main:Window(config)
         while task.wait() do
             pcall(function()
                 --// Background \\--
-                KeyFrame.BackgroundColor3 = Furious_Main.Theme.Custom.Background
-                MainFrame.BackgroundColor3 = Furious_Main.Theme.Custom.Background
-                LeftFrame.BackgroundColor3 = Furious_Main.Theme.Custom.Background
+                KeyFrame.BackgroundColor3 = Neverlose_Main.Theme.Custom.Background
+                MainFrame.BackgroundColor3 = Neverlose_Main.Theme.Custom.Background
+                LeftFrame.BackgroundColor3 = Neverlose_Main.Theme.Custom.Background
 
                 TweenService:Create(
                     MainFrameGlow,
                     TweenInfo.new(.4, Enum.EasingStyle.Quad),
-                    {ImageColor3 = Furious_Main.Theme.Custom.Glow}
+                    {ImageColor3 = Neverlose_Main.Theme.Custom.Glow}
                 ):Play()
                 --// Section \\--
 
 
                 --// Element \\
-                -- Furious_Main.Theme.Custom.Section
-                -- Furious_Main.Theme.Custom.Element
-                -- Furious_Main.Theme.Custom.Text
+                -- Neverlose_Main.Theme.Custom.Section
+                -- Neverlose_Main.Theme.Custom.Element
+                -- Neverlose_Main.Theme.Custom.Text
             end)
         end
     end)
     return TabsSec
 end
 
-return Furious_Main
+return Neverlose_Main
